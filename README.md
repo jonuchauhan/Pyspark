@@ -1,1 +1,1 @@
-# SparkWithScalaTraining
+# SparkWithPythonTraining
