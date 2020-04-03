@@ -13,7 +13,9 @@ def parseLines(lines):
 
 input = sc.textFile("C:/spark/1800.csv")
 parsed_map = input.map(parseLines)
-MinStations = parsed_map.filter(lambda x: 'TMIN' in x[1]).map(lambda x: (x[0], x[2])).reduceByKey(lambda x, y: min(x, y))
-
-for a in MinStations.collect():
+MinTempBystation = parsed_map.filter(lambda x: 'TMIN' in x[1]).map(lambda x: (x[0], x[2])).reduceByKey(lambda x, y: min(x, y))
+MaxTempBystation = parsed_map.filter(lambda x: 'TMAX' in x[1]).map(lambda x: (x[0], x[2])).reduceByKey(lambda x, y: max(x, y))
+for a in MinTempBystation.collect():
     print(a)
+for b in MaxTempBystation.collect():
+    print(b)
